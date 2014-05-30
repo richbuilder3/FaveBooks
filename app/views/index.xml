@@ -1,5 +1,9 @@
 <Alloy>
+	<Collection src="books"/>
 	<Window class="container">
-		<Label id="label" onClick="doClick">Hello, World</Label>
+		<!-- Add tableView and TableViewRow -->
+		<TableView dataCollection="books">
+			<TableViewRow title="{title}" author="{author}"></TableViewRow>
+		</TableView>
 	</Window>
 </Alloy>
