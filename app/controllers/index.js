@@ -10,7 +10,6 @@ var book = Alloy.createModel('books',{
 
 var myBooks = Alloy.Collections.books;
 
-
 function showBook(event){
 	var selectedBook = event.source;var args = {
 		title: selectedBook.title,
@@ -21,11 +20,12 @@ function showBook(event){
 	(OS_IOS) {$.navGroupWin.openWindow(bookview);} if (OS_ANDROID) {bookview.open();}}
 
 
-// function addBook(){ 
-	// var myAddBook =
- // Alloy.createController("addbook", {}).getView(); if (OS_IOS)
- // {$.navGroupWin.openWindow(myAddBook);} if (OS_ANDROID) {myAddBook.open();
- // }}
+function addBook(){ 
+	var myAddBook =
+ Alloy.createController("addbook", {}).getView(); if (OS_IOS)
+ {$.navGroupWin.openWindow(myAddBook);} if (OS_ANDROID) {myAddBook.open();
+ }}
+
 
 
 myBooks.add(book);

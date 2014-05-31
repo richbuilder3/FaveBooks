@@ -1,19 +1,19 @@
 function Controller() {
-    function __alloyId8(e) {
+    function __alloyId10(e) {
         if (e && e.fromAdapter) return;
-        __alloyId8.opts || {};
-        var models = __alloyId7.models;
+        __alloyId10.opts || {};
+        var models = __alloyId9.models;
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId4 = models[i];
-            __alloyId4.__transform = {};
-            var __alloyId6 = Ti.UI.createTableViewRow({
-                title: "undefined" != typeof __alloyId4.__transform["title"] ? __alloyId4.__transform["title"] : __alloyId4.get("title"),
-                author: "undefined" != typeof __alloyId4.__transform["author"] ? __alloyId4.__transform["author"] : __alloyId4.get("author")
+            var __alloyId6 = models[i];
+            __alloyId6.__transform = {};
+            var __alloyId8 = Ti.UI.createTableViewRow({
+                title: "undefined" != typeof __alloyId6.__transform["title"] ? __alloyId6.__transform["title"] : __alloyId6.get("title"),
+                author: "undefined" != typeof __alloyId6.__transform["author"] ? __alloyId6.__transform["author"] : __alloyId6.get("author")
             });
-            rows.push(__alloyId6);
-            showBook ? __alloyId6.addEventListener("click", showBook) : __defers["__alloyId6!click!showBook"] = true;
+            rows.push(__alloyId8);
+            showBook ? __alloyId8.addEventListener("click", showBook) : __defers["__alloyId8!click!showBook"] = true;
         }
         $.__views.bookTable.setData(rows);
     }
@@ -26,6 +26,10 @@ function Controller() {
         var bookview = Alloy.createController("bookdetails", args).getView();
         $.navGroupWin.openWindow(bookview);
     }
+    function addBook() {
+        var myAddBook = Alloy.createController("addbook", {}).getView();
+        $.navGroupWin.openWindow(myAddBook);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -35,24 +39,37 @@ function Controller() {
     var exports = {};
     var __defers = {};
     Alloy.Collections.instance("books");
-    $.__views.__alloyId3 = Ti.UI.createWindow({
+    $.__views.__alloyId5 = Ti.UI.createWindow({
         backgroundColor: "white",
         title: "My Books",
-        id: "__alloyId3"
+        id: "__alloyId5"
     });
     $.__views.bookTable = Ti.UI.createTableView({
         id: "bookTable"
     });
-    $.__views.__alloyId3.add($.__views.bookTable);
-    var __alloyId7 = Alloy.Collections["books"] || books;
-    __alloyId7.on("fetch destroy change add remove reset", __alloyId8);
+    $.__views.__alloyId5.add($.__views.bookTable);
+    var __alloyId9 = Alloy.Collections["books"] || books;
+    __alloyId9.on("fetch destroy change add remove reset", __alloyId10);
+    var __alloyId13 = [];
+    $.__views.add = Ti.UI.createButton({
+        id: "add",
+        title: "Add book"
+    });
+    __alloyId13.push($.__views.add);
+    addBook ? $.__views.add.addEventListener("click", addBook) : __defers["$.__views.add!click!addBook"] = true;
+    $.__views.__alloyId11 = Ti.UI.iOS.createToolbar({
+        items: __alloyId13,
+        bottom: "0",
+        id: "__alloyId11"
+    });
+    $.__views.__alloyId5.add($.__views.__alloyId11);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
-        window: $.__views.__alloyId3,
+        window: $.__views.__alloyId5,
         id: "navGroupWin"
     });
     $.__views.navGroupWin && $.addTopLevelView($.__views.navGroupWin);
     exports.destroy = function() {
-        __alloyId7.off("fetch destroy change add remove reset", __alloyId8);
+        __alloyId9.off("fetch destroy change add remove reset", __alloyId10);
     };
     _.extend($, $.__views);
     var book = Alloy.createModel("books", {
@@ -63,7 +80,8 @@ function Controller() {
     myBooks.add(book);
     book.save();
     $.navGroupWin.open();
-    __defers["__alloyId6!click!showBook"] && __alloyId6.addEventListener("click", showBook);
+    __defers["__alloyId8!click!showBook"] && __alloyId8.addEventListener("click", showBook);
+    __defers["$.__views.add!click!addBook"] && $.__views.add.addEventListener("click", addBook);
     _.extend($, exports);
 }
 
