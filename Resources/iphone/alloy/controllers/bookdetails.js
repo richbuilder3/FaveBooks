@@ -11,14 +11,27 @@ function Controller() {
         id: "bookdetails"
     });
     $.__views.bookdetails && $.addTopLevelView($.__views.bookdetails);
+    $.__views.__alloyId0 = Ti.UI.createView({
+        layout: "vertical",
+        id: "__alloyId0"
+    });
+    $.__views.bookdetails.add($.__views.__alloyId0);
     $.__views.titleLabel = Ti.UI.createLabel({
+        font: {
+            fontSize: "30"
+        },
+        left: "10",
         id: "titleLabel"
     });
-    $.__views.bookdetails.add($.__views.titleLabel);
+    $.__views.__alloyId0.add($.__views.titleLabel);
     $.__views.authorLabel = Ti.UI.createLabel({
+        font: {
+            fontSize: "20"
+        },
+        left: "10",
         id: "authorLabel"
     });
-    $.__views.bookdetails.add($.__views.authorLabel);
+    $.__views.__alloyId0.add($.__views.authorLabel);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
