@@ -20,8 +20,21 @@ function showBook(event){
 	bookview.open();
 }
 
+function addBook(){ var myAddBook =
+ Alloy.createConroller("addbook", {}).getView(); if (OS_IOS)
+ {$.navGroupWin.openWindow(myAddBook);} if (OS_ANDROID) {myAddBook.open();
+ }}
+
+
+
 
 myBooks.add(book);
 book.save();
 
-$.index.open();
+if (OS_IOS) {
+	$.navGroupWin.open();
+}
+if (OS_ANDROID) {
+	$.index.open();
+}
+

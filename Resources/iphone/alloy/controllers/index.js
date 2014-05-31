@@ -15,7 +15,7 @@ function Controller() {
             rows.push(__alloyId6);
             showBook ? __alloyId6.addEventListener("click", showBook) : __defers["__alloyId6!click!showBook"] = true;
         }
-        $.__views.__alloyId3.setData(rows);
+        $.__views.bookTable.setData(rows);
     }
     function showBook(event) {
         var selectedBook = event.source;
@@ -35,17 +35,22 @@ function Controller() {
     var exports = {};
     var __defers = {};
     Alloy.Collections.instance("books");
-    $.__views.index = Ti.UI.createWindow({
+    $.__views.__alloyId3 = Ti.UI.createWindow({
         backgroundColor: "white",
-        id: "index"
-    });
-    $.__views.index && $.addTopLevelView($.__views.index);
-    $.__views.__alloyId3 = Ti.UI.createTableView({
+        title: "My Books",
         id: "__alloyId3"
     });
-    $.__views.index.add($.__views.__alloyId3);
+    $.__views.bookTable = Ti.UI.createTableView({
+        id: "bookTable"
+    });
+    $.__views.__alloyId3.add($.__views.bookTable);
     var __alloyId7 = Alloy.Collections["books"] || books;
     __alloyId7.on("fetch destroy change add remove reset", __alloyId8);
+    $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
+        window: $.__views.__alloyId3,
+        id: "navGroupWin"
+    });
+    $.__views.navGroupWin && $.addTopLevelView($.__views.navGroupWin);
     exports.destroy = function() {
         __alloyId7.off("fetch destroy change add remove reset", __alloyId8);
     };
@@ -57,7 +62,7 @@ function Controller() {
     var myBooks = Alloy.Collections.books;
     myBooks.add(book);
     book.save();
-    $.index.open();
+    $.navGroupWin.open();
     __defers["__alloyId6!click!showBook"] && __alloyId6.addEventListener("click", showBook);
     _.extend($, exports);
 }
