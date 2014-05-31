@@ -5,5 +5,5 @@
 			<TextField id="authorInput" hintText="Author..."></TextField>
 			<Button id="insertBookButton" onClick="addBook">Add</Button>
 		</View>
-	<Window>
+	</Window>
 </Alloy>

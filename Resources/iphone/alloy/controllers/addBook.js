@@ -25,7 +25,7 @@ function Controller() {
         layout: "vertical",
         id: "__alloyId0"
     });
-    $.__views.__alloyId0 && $.addTopLevelView($.__views.__alloyId0);
+    $.__views.addBook.add($.__views.__alloyId0);
     $.__views.titleInput = Ti.UI.createTextField({
         id: "titleInput",
         hintText: "Title..."
@@ -42,10 +42,6 @@ function Controller() {
     });
     $.__views.__alloyId0.add($.__views.insertBookButton);
     addBook ? $.__views.insertBookButton.addEventListener("click", addBook) : __defers["$.__views.insertBookButton!click!addBook"] = true;
-    $.__views.__alloyId1 = Ti.UI.createWindow({
-        id: "__alloyId1"
-    });
-    $.__views.__alloyId1 && $.addTopLevelView($.__views.__alloyId1);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var myBooks = Alloy.Collections.books;

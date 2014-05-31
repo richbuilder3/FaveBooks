@@ -11,11 +11,11 @@ function Controller() {
         id: "bookdetails"
     });
     $.__views.bookdetails && $.addTopLevelView($.__views.bookdetails);
-    $.__views.__alloyId2 = Ti.UI.createView({
+    $.__views.__alloyId1 = Ti.UI.createView({
         layout: "vertical",
-        id: "__alloyId2"
+        id: "__alloyId1"
     });
-    $.__views.bookdetails.add($.__views.__alloyId2);
+    $.__views.bookdetails.add($.__views.__alloyId1);
     $.__views.titleLabel = Ti.UI.createLabel({
         font: {
             fontSize: "30"
@@ -23,7 +23,7 @@ function Controller() {
         left: "10",
         id: "titleLabel"
     });
-    $.__views.__alloyId2.add($.__views.titleLabel);
+    $.__views.__alloyId1.add($.__views.titleLabel);
     $.__views.authorLabel = Ti.UI.createLabel({
         font: {
             fontSize: "20"
@@ -31,7 +31,7 @@ function Controller() {
         left: "10",
         id: "authorLabel"
     });
-    $.__views.__alloyId2.add($.__views.authorLabel);
+    $.__views.__alloyId1.add($.__views.authorLabel);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};

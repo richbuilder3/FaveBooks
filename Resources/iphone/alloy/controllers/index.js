@@ -1,19 +1,19 @@
 function Controller() {
-    function __alloyId10(e) {
+    function __alloyId9(e) {
         if (e && e.fromAdapter) return;
-        __alloyId10.opts || {};
-        var models = __alloyId9.models;
+        __alloyId9.opts || {};
+        var models = __alloyId8.models;
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId6 = models[i];
-            __alloyId6.__transform = {};
-            var __alloyId8 = Ti.UI.createTableViewRow({
-                title: "undefined" != typeof __alloyId6.__transform["title"] ? __alloyId6.__transform["title"] : __alloyId6.get("title"),
-                author: "undefined" != typeof __alloyId6.__transform["author"] ? __alloyId6.__transform["author"] : __alloyId6.get("author")
+            var __alloyId5 = models[i];
+            __alloyId5.__transform = {};
+            var __alloyId7 = Ti.UI.createTableViewRow({
+                title: "undefined" != typeof __alloyId5.__transform["title"] ? __alloyId5.__transform["title"] : __alloyId5.get("title"),
+                author: "undefined" != typeof __alloyId5.__transform["author"] ? __alloyId5.__transform["author"] : __alloyId5.get("author")
             });
-            rows.push(__alloyId8);
-            showBook ? __alloyId8.addEventListener("click", showBook) : __defers["__alloyId8!click!showBook"] = true;
+            rows.push(__alloyId7);
+            showBook ? __alloyId7.addEventListener("click", showBook) : __defers["__alloyId7!click!showBook"] = true;
         }
         $.__views.bookTable.setData(rows);
     }
@@ -39,37 +39,37 @@ function Controller() {
     var exports = {};
     var __defers = {};
     Alloy.Collections.instance("books");
-    $.__views.__alloyId5 = Ti.UI.createWindow({
+    $.__views.__alloyId4 = Ti.UI.createWindow({
         backgroundColor: "white",
         title: "My Books",
-        id: "__alloyId5"
+        id: "__alloyId4"
     });
     $.__views.bookTable = Ti.UI.createTableView({
         id: "bookTable"
     });
-    $.__views.__alloyId5.add($.__views.bookTable);
-    var __alloyId9 = Alloy.Collections["books"] || books;
-    __alloyId9.on("fetch destroy change add remove reset", __alloyId10);
-    var __alloyId13 = [];
+    $.__views.__alloyId4.add($.__views.bookTable);
+    var __alloyId8 = Alloy.Collections["books"] || books;
+    __alloyId8.on("fetch destroy change add remove reset", __alloyId9);
+    var __alloyId12 = [];
     $.__views.add = Ti.UI.createButton({
         id: "add",
         title: "Add book"
     });
-    __alloyId13.push($.__views.add);
+    __alloyId12.push($.__views.add);
     addBook ? $.__views.add.addEventListener("click", addBook) : __defers["$.__views.add!click!addBook"] = true;
-    $.__views.__alloyId11 = Ti.UI.iOS.createToolbar({
-        items: __alloyId13,
+    $.__views.__alloyId10 = Ti.UI.iOS.createToolbar({
+        items: __alloyId12,
         bottom: "0",
-        id: "__alloyId11"
+        id: "__alloyId10"
     });
-    $.__views.__alloyId5.add($.__views.__alloyId11);
+    $.__views.__alloyId4.add($.__views.__alloyId10);
     $.__views.navGroupWin = Ti.UI.iOS.createNavigationWindow({
-        window: $.__views.__alloyId5,
+        window: $.__views.__alloyId4,
         id: "navGroupWin"
     });
     $.__views.navGroupWin && $.addTopLevelView($.__views.navGroupWin);
     exports.destroy = function() {
-        __alloyId9.off("fetch destroy change add remove reset", __alloyId10);
+        __alloyId8.off("fetch destroy change add remove reset", __alloyId9);
     };
     _.extend($, $.__views);
     var book = Alloy.createModel("books", {
@@ -80,7 +80,7 @@ function Controller() {
     myBooks.add(book);
     book.save();
     $.navGroupWin.open();
-    __defers["__alloyId8!click!showBook"] && __alloyId8.addEventListener("click", showBook);
+    __defers["__alloyId7!click!showBook"] && __alloyId7.addEventListener("click", showBook);
     __defers["$.__views.add!click!addBook"] && $.__views.add.addEventListener("click", addBook);
     _.extend($, exports);
 }
