@@ -24,7 +24,7 @@ function Controller() {
             author: selectedBook.author
         };
         var bookview = Alloy.createController("bookdetails", args).getView();
-        bookview.open();
+        $.navGroupWin.openWindow(bookview);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";

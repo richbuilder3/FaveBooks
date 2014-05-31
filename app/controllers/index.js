@@ -17,15 +17,15 @@ function showBook(event){
 		author: selectedBook.author
 	};
 	var bookview = Alloy.createController("bookdetails", args).getView();
-	bookview.open();
-}
-
-function addBook(){ var myAddBook =
- Alloy.createConroller("addbook", {}).getView(); if (OS_IOS)
- {$.navGroupWin.openWindow(myAddBook);} if (OS_ANDROID) {myAddBook.open();
- }}
+	if 
+	(OS_IOS) {$.navGroupWin.openWindow(bookview);} if (OS_ANDROID) {bookview.open();}}
 
 
+// function addBook(){ 
+	// var myAddBook =
+ // Alloy.createController("addbook", {}).getView(); if (OS_IOS)
+ // {$.navGroupWin.openWindow(myAddBook);} if (OS_ANDROID) {myAddBook.open();
+ // }}
 
 
 myBooks.add(book);
@@ -37,4 +37,3 @@ if (OS_IOS) {
 if (OS_ANDROID) {
 	$.index.open();
 }
-
